@@ -23,6 +23,7 @@ function SignUp() {
   const [textPass, setTextPass] = useState('');
   const [textPass2, setTextPass2] = useState('');
 
+
   const clasess = useStyles();
 
   const onSubmit = async (event) => {
@@ -113,9 +114,11 @@ function SignUp() {
           onChange={onChangePass2}
         />
         <br />
+
         <Button type="submit" variant="contained" color="primary">
           Enviar
         </Button>
+      
       </form>
     </div>
   );
