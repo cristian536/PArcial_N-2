@@ -165,8 +165,6 @@ function SignUp() {
         </Button>
       
       </form>
-    </div>
-  );
-}
+    </}
 
 export default SignUp;
