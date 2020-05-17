@@ -6,7 +6,7 @@ function Home(props) {
   console.log(props);
   return (
     <div>
-      <h1>{'Pagina de registro nuevos clientes'}</h1>
+      <h1 id="titulo">{'Pagina de registro nuevos clientes'}</h1>
       <ol>
         <li>
           <Link to="/signIn">{'Página de registro de imail'}</Link>
