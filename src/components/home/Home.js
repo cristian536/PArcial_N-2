@@ -6,13 +6,13 @@ function Home(props) {
   console.log(props);
   return (
     <div>
-      <h1>{'Hola desde la página de inicio :)'}</h1>
+      <h1>{'Pagina de registro nuevos clientes'}</h1>
       <ol>
         <li>
           <Link to="/signIn">{'Página de ingreso'}</Link>
         </li>
         <li>
-          <Link to="/signUp">{'Página de registro'}</Link>
+          <Link to="/signUp">{'Registro'}</Link>
         </li>
       </ol>
     </div>
