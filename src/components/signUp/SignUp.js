@@ -9,13 +9,16 @@ import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
+import Icon from '@material-ui/core/Icon';
+import Checkbox from '@material-ui/core/Checkbox';
 
-/*import Checkbox from '@material-ui/core/Checkbox';*/
+
 
 
 const useStyles = makeStyles((theme) => ({
   root: {
     margin: '10px',
+    
 
   },
   
@@ -25,6 +28,7 @@ function SignUp() {
   const [textName, setTextName] = useState('');
   const [textLastName, setTextLastName] = useState('');
   const [textAge, setTextAge] = useState('');
+  const [textEmail, setTextEmail] = useState('');
   const [textPass, setTextPass] = useState('');
   const [textPass2, setTextPass2] = useState('');
   const [textCheck1, setTextCheck1] = useState('');
@@ -35,12 +39,13 @@ function SignUp() {
 
   const onSubmit = async (event) => {
     event.preventDefault();
-    console.log(textName, textLastName,textAge,textPass,textPass2,textCheck1,textCheck2);
+    console.log(textName, textLastName,textAge,textEmail,textPass,textPass2,textCheck1,textCheck2);
 
     await axios.post('http://localhost:8080/user', {
       name: textName,
       lastName: textLastName,
       Age: textAge,
+      Email: textEmail,
       Pass: textPass,
       Ocupation: textCheck1,
       Gener: textCheck2, 
@@ -57,6 +62,9 @@ function SignUp() {
   };
   const onChangeAge = (event) => {
     setTextAge(event.target.value);
+  };
+  const onChangeEmail = (event) => {
+    setTextEmail(event.target.value);
   };
   const onChangePass = (event) => {
     setTextPass(event.target.value);
@@ -75,18 +83,24 @@ function SignUp() {
 
 
   return (
+    
     <div className="mainDiv">
       <Typography className="encabezado">
-            Sign Up
+        Bienvenido
+
             <h1 className="textoencabezado"> Ingreso de datos para registro</h1>
           </Typography>
       <form onSubmit={onSubmit}>
+      <Typography > 
+            <h2  className="Subsec">Datos Personales</h2>
+          </Typography>
         <TextField
           type="text"
           className={clasess.root}
           id="Nombre"
           label="Nombre"
           variant="outlined"
+          required
           onChange={onChangeName}
         />
         <br />
@@ -96,6 +110,7 @@ function SignUp() {
           id="Apellido"
           label="Apellido"
           variant="outlined"
+          required
           onChange={onChangeLastName}
         />
         <br />
@@ -105,8 +120,17 @@ function SignUp() {
           id="Edad"
           label="Edad"
           variant="outlined"
-          required
           onChange={onChangeAge}
+        />
+        <br />
+        <TextField
+          type="email"
+          className={clasess.root}
+          id="Email"
+          label="Email"
+          variant="outlined"
+          required
+          onChange={onChangeEmail}
         />
         <br />
         <TextField
@@ -132,32 +156,56 @@ function SignUp() {
           required
           onChange={onChangePass2}
         />
-        <br />
+    
+        <br /> 
         <Typography className="Subsec"> 
             <h2  className="Subsec">Ocupación</h2>
           </Typography>
+       
 
-        <input type="checkbox" name="check1" onChange={onChangeCheck1} value="Estudiante" />
-        <label>Estudiante</label>
-        <input type="checkbox" name="check2"onChange={onChangeCheck1} value="Admistrativo" />
-        <label>Admistrativo</label>
-        <input type="checkbox"  name="check3" onChange={onChangeCheck1} value="Profesor"/>
-        <label>Profesor</label>
-        <br />
+        <Checkbox
+         name="check1" onChange={onChangeCheck1} value="Estudiante"
+        inputProps={{ 'aria-label': 'primary checkbox' }}
+      />
+      <label>Estudiante</label>
+      
+      <Checkbox
+         name="check1" onChange={onChangeCheck1} value="Administrativo"
+        inputProps={{ 'aria-label': 'primary checkbox' }}
+      />
+      <label>Administrativo</label>
+      
+      <Checkbox
+         name="check1" onChange={onChangeCheck1} value="Docente"
+        inputProps={{ 'aria-label': 'primary checkbox' }}
+      />
+      <label>Docente</label>
+        
 
         <Typography > 
-            <h2  className="Subsec">Genero</h2>
+            <h2  className="Subsec">Género</h2>
           </Typography>
 
-        <input type="checkbox" name="check1" onChange={onChangeCheck2} value="Masculino" />
-        <label>Masculino</label>
-        <input type="checkbox" name="check2"onChange={onChangeCheck2} value="Femenino" />
-        <label>Femenino</label>
+        
+        <Checkbox
+         name="check2" onChange={onChangeCheck2} value="Masculino"
+        inputProps={{ 'aria-label': 'primary checkbox' }}
+      />
+      <label>Masculino</label>
+        
+
+      <Checkbox
+         name="check2" onChange={onChangeCheck2} value="Femenino"
+        inputProps={{ 'aria-label': 'primary checkbox' }}
+      />
+      <label>Femenino</label>
         
         <br />
-        <Button type="submit" variant="contained" color="primary">
+        <Button type="submit" variant="contained" color="secondary"  endIcon={<Icon>send</Icon>}>
           Registrar
         </Button>
+
+       
       </form>
     </div>
   );
