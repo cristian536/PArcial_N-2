@@ -35,6 +35,7 @@ function SignUp() {
   const [textCheck2, setTextCheck2] = useState('');
   
 
+
   const clasess = useStyles();
 
   const onSubmit = async (event) => {
@@ -156,8 +157,6 @@ function SignUp() {
           required
           onChange={onChangePass2}
         />
-    
-        <br /> 
         <Typography className="Subsec"> 
             <h2  className="Subsec">Ocupación</h2>
           </Typography>
@@ -201,14 +200,12 @@ function SignUp() {
       <label>Femenino</label>
         
         <br />
-        <Button type="submit" variant="contained" color="secondary"  endIcon={<Icon>send</Icon>}>
+
+        <Button type="submit" variant="contained" color="primary">
           Registrar
         </Button>
-
-       
+      
       </form>
-    </div>
-  );
-}
+    </}
 
 export default SignUp;
